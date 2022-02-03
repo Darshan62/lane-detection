@@ -6,6 +6,7 @@ curve_list = []
 avg_val = 10
 
 def get_lane(img):
+    """Videos from raspberry pi gets processed in main PC using this function and returns curve value."""
     # Thresholding and Warping 
     h, w, c = img.shape
     points = utils.val_trackbars()
@@ -40,23 +41,3 @@ def get_lane(img):
     return curve
 
 
-def main():
-    vid = cv2.VideoCapture('6.avi')
-    ini = [158, 148, 71, 221]
-    utils.create_trackbars(ini)
-    while vid.isOpened():
-        _, img = vid.read()
-
-        if _:
-            img = cv2.resize(img, (480, 240))
-            get_lane(img)
-        else:
-            print('no video')
-            vid.set(cv2.CAP_PROP_POS_FRAMES, 0)
-       
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-        
-if __name__ == '__main__':
-    main()
-        
